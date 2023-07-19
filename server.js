@@ -13,10 +13,8 @@ app.get("/",(req,res)=>{
     res.send("Hello World")
 })
 
-connecttoMongo()
-.then(()=>{
-    app.listen(port,()=>{
-        console.log(`Server listening to http://localhost:${port}`);
-    })
 
+app.listen(port, async()=>{
+    const connect = await connecttoMongo()
+    console.log(`Server listening to http://localhost:${port}`);
 })
